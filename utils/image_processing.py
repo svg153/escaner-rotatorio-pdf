@@ -2,13 +2,13 @@
 Utilidades para mejorar la calidad de imágenes en PDFs.
 """
 
-from typing import Optional
 import io
+from typing import Optional
 
 try:
-    from PIL import Image, ImageEnhance, ImageFilter
-    import numpy as np
     import cv2
+    import numpy as np
+    from PIL import Image, ImageEnhance, ImageFilter
     from skimage import filters
 
     IMAGE_PROCESSING_AVAILABLE = True
@@ -16,8 +16,8 @@ except ImportError:
     IMAGE_PROCESSING_AVAILABLE = False
 
 try:
-    from pdf2image import convert_from_path
     import img2pdf
+    from pdf2image import convert_from_path
 
     PDF_IMAGE_AVAILABLE = True
 except ImportError:

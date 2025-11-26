@@ -2,21 +2,21 @@
 Utilidades para detección y corrección de inclinación (deskew).
 """
 
-from typing import Tuple
 import math
+from typing import Tuple
 
 try:
-    from PIL import Image
-    import numpy as np
     import cv2
+    import numpy as np
+    from PIL import Image
 
     DESKEW_AVAILABLE = True
 except ImportError:
     DESKEW_AVAILABLE = False
 
 try:
-    from pdf2image import convert_from_path
     import img2pdf
+    from pdf2image import convert_from_path
 
     PDF_IMAGE_AVAILABLE = True
 except ImportError:

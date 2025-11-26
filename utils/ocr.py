@@ -3,6 +3,7 @@ Utilidades para OCR (Reconocimiento Óptico de Caracteres).
 """
 
 from typing import List
+
 from PIL import Image
 
 try:

@@ -6,10 +6,11 @@ from datetime import datetime
 from typing import Optional
 
 try:
-    from PyPDF2 import PdfReader, PdfWriter
-    from reportlab.pdfgen import canvas
-    from reportlab.lib.pagesizes import A4
     import io
+
+    from PyPDF2 import PdfReader, PdfWriter
+    from reportlab.lib.pagesizes import A4
+    from reportlab.pdfgen import canvas
 
     METADATA_AVAILABLE = True
 except ImportError:

@@ -4,13 +4,14 @@ CLI for PDF Merger Tool.
 Command-line interface separated from core logic.
 """
 
-import sys
 import argparse
-import yaml
+import sys
 from pathlib import Path
 from typing import List, Optional
 
-from models.pdf_processor import PDFInput, ProcessingOptions, PDFMergerCore
+import yaml
+
+from models.pdf_processor import PDFInput, PDFMergerCore, ProcessingOptions
 
 
 def load_profile(profile_name: str) -> Optional[dict]:

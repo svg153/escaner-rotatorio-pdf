@@ -3,12 +3,12 @@ Simple GUI example using tkinter.
 Shows how to use the core logic with a graphical interface.
 """
 
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
-from pathlib import Path
 import threading
+import tkinter as tk
+from pathlib import Path
+from tkinter import filedialog, messagebox, ttk
 
-from models.pdf_processor import PDFInput, ProcessingOptions, PDFMergerCore
+from models.pdf_processor import PDFInput, PDFMergerCore, ProcessingOptions
 
 
 class PDFMergerGUI:

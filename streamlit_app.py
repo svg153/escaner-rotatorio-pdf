@@ -12,7 +12,7 @@ from uuid import uuid4
 import streamlit as st
 import yaml
 
-from models.pdf_processor import PDFInput, ProcessingOptions, PDFMergerCore
+from models.pdf_processor import PDFInput, PDFMergerCore, ProcessingOptions
 
 LOGGER = logging.getLogger("pdf_merger_streamlit")
 if not LOGGER.handlers:

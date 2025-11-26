@@ -3,14 +3,14 @@ Example Web API using Flask.
 Shows how to use the core logic without CLI.
 """
 
-from flask import Flask, request, send_file, jsonify
-from werkzeug.utils import secure_filename
 import os
 import tempfile
 from pathlib import Path
 
-from models.pdf_processor import PDFInput, ProcessingOptions, PDFMergerCore
+from flask import Flask, jsonify, request, send_file
+from werkzeug.utils import secure_filename
 
+from models.pdf_processor import PDFInput, PDFMergerCore, ProcessingOptions
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024  # 100MB max

@@ -5,16 +5,16 @@ Utilidades para detección y eliminación de páginas en blanco.
 from typing import List, Tuple
 
 try:
-    from PIL import Image
     import numpy as np
+    from PIL import Image
 
     BLANK_DETECTION_AVAILABLE = True
 except ImportError:
     BLANK_DETECTION_AVAILABLE = False
 
 try:
-    from PyPDF2 import PdfReader, PdfWriter
     from pdf2image import convert_from_path
+    from PyPDF2 import PdfReader, PdfWriter
 
     PDF_AVAILABLE = True
 except ImportError:

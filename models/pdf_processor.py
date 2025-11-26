@@ -3,10 +3,10 @@ Core logic for PDF merging and processing.
 Separated from CLI to allow web/GUI implementations.
 """
 
-from pathlib import Path
-from typing import List, Optional
 import tempfile
 from dataclasses import dataclass
+from pathlib import Path
+from typing import List, Optional
 
 from PyPDF2 import PdfReader, PdfWriter
 
@@ -219,21 +219,21 @@ class PDFMergerCore:
         try:
             # Import utilities only when needed
             from utils.blank_detection import (
-                remove_blank_pages,
                 check_blank_detection_availability,
+                remove_blank_pages,
             )
             from utils.deskew import auto_deskew_pdf, check_deskew_availability
             from utils.image_processing import (
-                process_pdf_images,
                 check_image_processing_availability,
+                process_pdf_images,
             )
-            from utils.ocr import add_ocr_layer_to_pdf, check_ocr_availability
             from utils.metadata import (
                 add_metadata,
-                add_text_watermark,
                 add_page_numbers,
+                add_text_watermark,
                 check_metadata_availability,
             )
+            from utils.ocr import add_ocr_layer_to_pdf, check_ocr_availability
 
             # 1. Remove blank pages
             if self.options.remove_blank:
@@ -587,9 +587,10 @@ class PDFMergerCore:
                 quality = 1
             if quality > 95:
                 quality = 95  # Pillow advises <=95
-            import pypdfium2 as pdfium
-            import img2pdf
             import io
+
+            import img2pdf
+            import pypdfium2 as pdfium
 
             if self.options.verbose:
                 print(
