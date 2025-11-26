@@ -1,0 +1,27 @@
+[run]
+source =
+    cli
+    models
+    utils
+omit =
+    streamlit_app.py
+    gui_example.py
+    web_api_example.py
+    docs/*
+    tests/*
+    .venv/*
+    */__pycache__/*
+
+[report]
+show_missing = True
+skip_covered = False
+precision = 2
+exclude_lines =
+    pragma: no cover
+    pragma: nocover
+    pragma: skip
+    ^\s*if __name__ == ['"]__main__['"]:
+    ^\s*except ImportError:
+    ^\s*raise NotImplementedError
+    ^\s*raise NotImplemented
+    ^\s*raise AssertionError
