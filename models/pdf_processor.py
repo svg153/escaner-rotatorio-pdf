@@ -14,7 +14,7 @@ try:
     import pikepdf
 
     PIKEPDF_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     PIKEPDF_AVAILABLE = False
 
 

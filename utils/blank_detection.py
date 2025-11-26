@@ -9,7 +9,7 @@ try:
     from PIL import Image
 
     BLANK_DETECTION_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     BLANK_DETECTION_AVAILABLE = False
 
 try:
@@ -17,7 +17,7 @@ try:
     from PyPDF2 import PdfReader, PdfWriter
 
     PDF_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     PDF_AVAILABLE = False
 
 

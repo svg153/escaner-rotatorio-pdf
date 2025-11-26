@@ -44,7 +44,7 @@ class PDFProcessorTestCase(unittest.TestCase):
         output = self.tmp_path / "merged.pdf"
 
         inputs = [PDFInput(str(pdf1)), PDFInput(str(pdf2), reverse=True)]
-        core = PDFMergerCore(ProcessingOptions(verbose=False))
+        core = PDFMergerCore(ProcessingOptions(verbose=True))
 
         self.assertTrue(core.merge_pdfs(inputs, str(output)))
         self.assertEqual(self._page_widths(output), [100.0, 200.0, 400.0, 300.0])
@@ -55,7 +55,7 @@ class PDFProcessorTestCase(unittest.TestCase):
         output = self.tmp_path / "interleaved.pdf"
 
         inputs = [PDFInput(str(pdf1)), PDFInput(str(pdf2), reverse=True)]
-        core = PDFMergerCore(ProcessingOptions(verbose=False))
+        core = PDFMergerCore(ProcessingOptions(verbose=True))
 
         self.assertTrue(core.interleave_pdfs(inputs, str(output)))
         self.assertEqual(self._page_widths(output), [100.0, 400.0, 200.0, 300.0])
@@ -66,7 +66,7 @@ class PDFProcessorTestCase(unittest.TestCase):
         output = self.tmp_path / "final.pdf"
         inputs = [PDFInput(str(pdf1)), PDFInput(str(pdf2))]
 
-        core = PDFMergerCore(ProcessingOptions(verbose=False))
+        core = PDFMergerCore(ProcessingOptions(verbose=True))
 
         with (
             patch.object(core, "interleave_pdfs", return_value=True) as mock_interleave,
@@ -102,7 +102,7 @@ class PDFProcessorTestCase(unittest.TestCase):
             page_numbers=True,
             title="Doc",
             author="Autor",
-            verbose=False,
+            verbose=True,
         )
         core = PDFMergerCore(options)
 

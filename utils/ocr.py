@@ -11,7 +11,7 @@ try:
     from pdf2image import convert_from_path
 
     OCR_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     OCR_AVAILABLE = False
 
 try:

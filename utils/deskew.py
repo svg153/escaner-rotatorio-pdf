@@ -11,7 +11,7 @@ try:
     from PIL import Image
 
     DESKEW_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     DESKEW_AVAILABLE = False
 
 try:
@@ -19,7 +19,7 @@ try:
     from pdf2image import convert_from_path
 
     PDF_IMAGE_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     PDF_IMAGE_AVAILABLE = False
 
 

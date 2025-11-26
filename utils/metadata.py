@@ -13,7 +13,7 @@ try:
     from reportlab.pdfgen import canvas
 
     METADATA_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     METADATA_AVAILABLE = False
 
 DEFAULT_PAGE_SIZE = (595.27, 841.89)

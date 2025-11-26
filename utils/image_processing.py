@@ -12,7 +12,7 @@ try:
     from skimage import filters
 
     IMAGE_PROCESSING_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     IMAGE_PROCESSING_AVAILABLE = False
 
 try:
@@ -20,7 +20,7 @@ try:
     from pdf2image import convert_from_path
 
     PDF_IMAGE_AVAILABLE = True
-except ImportError:
+except ImportError:  # pragma: no cover
     PDF_IMAGE_AVAILABLE = False
 
 
