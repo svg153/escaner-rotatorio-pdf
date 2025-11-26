@@ -1,13 +1,18 @@
 # PDF Merger Tool
 
-Herramienta moderna para combinar, procesar y optimizar PDFs escaneados cuando la impresora solo digitaliza a una cara. Mezcla automáticamente varios archivos (impares, pares, partes sueltas) en el orden correcto y permite aplicar OCR, limpieza, compresión o marcas de agua desde la línea de comandos, una interfaz web (Streamlit) o una API.
+Herramienta moderna para combinar, procesar y optimizar PDFs escaneados cuando
+la impresora solo digitaliza a una cara. Mezcla automáticamente varios
+archivos (impares, pares, partes sueltas) en el orden correcto y permite
+aplicar OCR, limpieza, compresión o marcas de agua desde la línea de comandos,
+una interfaz web (Streamlit) o una API.
 
 ## Características principales
 
 - ✅ Mezcla ilimitada de PDFs en el orden que definas
 - ✅ Intercalado de páginas para escaneos a doble cara
 - ✅ Inversión selectiva por archivo (`--reverse-pdfs 0 2 ...`)
-- ✅ OCR multilenguaje, deskew, binarizado, nitidez, recorte, eliminación de páginas en blanco
+- ✅ OCR multilenguaje, deskew, binarizado, nitidez, recorte,
+  eliminación de páginas en blanco
 - ✅ Compresión lossless y lossy (JPEG, DPI configurable)
 - ✅ Metadatos (título, autor), números de página y marcas de agua
 - ✅ Perfiles configurables (`config/profiles.yaml`) y UI en Streamlit
@@ -18,7 +23,8 @@ Herramienta moderna para combinar, procesar y optimizar PDFs escaneados cuando l
 pip install -r requirements.txt
 ```
 
-Requisitos mínimos: Python 3.10+, PyPDF2, pikepdf, Pillow, OpenCV, Tesseract (si usas `--ocr`).
+Requisitos mínimos: Python 3.10+, PyPDF2, pikepdf, Pillow, OpenCV, Tesseract
+(si usas `--ocr`).
 
 ## Uso rápido (CLI)
 
@@ -43,11 +49,17 @@ python cli.py --help
 ```
 
 Argumentos clave:
+
 - Entradas: lista de rutas a PDF en el orden deseado.
 - `-o/--output`: ruta de salida.
-- `--interleave`: alterna páginas entre todos los PDFs (útil para escaneo doble cara).
-- `--reverse-pdfs IDX [IDX ...]`: invierte la dirección de uno o más PDFs según su índice (0‑based).
-- Procesamiento: `--ocr`, `--ocr-lang`, `--auto-deskew`, `--enhance`, `--denoise`, `--binarize`, `--sharpen`, `--autocrop`, `--remove-blank`, `--lossy`, `--lossy-dpi`, `--lossy-quality`, `--optimize`, `--compress-level`.
+- `--interleave`: alterna páginas entre todos los PDFs (útil para escaneo
+  doble cara).
+- `--reverse-pdfs IDX [IDX ...]`: invierte la dirección de uno o más PDFs
+  según su índice (0‑based).
+- Procesamiento: `--ocr`, `--ocr-lang`, `--auto-deskew`, `--enhance`,
+  `--denoise`, `--binarize`, `--sharpen`, `--autocrop`, `--remove-blank`,
+  `--lossy`, `--lossy-dpi`, `--lossy-quality`, `--optimize`,
+  `--compress-level`.
 - Presentación: `--title`, `--author`, `--watermark`, `--page-numbers`.
 
 ## UI Web (Streamlit)
@@ -56,23 +68,39 @@ Argumentos clave:
 streamlit run streamlit_app.py
 ```
 
-La barra lateral permite elegir tipología (perfil) y ajustar todas las opciones con tooltips explicativos. Tras procesar, podrás descargar el PDF resultante en la misma interfaz.
+La barra lateral permite elegir tipología (perfil) y ajustar todas las
+opciones con tooltips explicativos. Tras procesar, podrás descargar el PDF
+resultante en la misma interfaz.
 
 ## API y GUI de ejemplo
 
 - `web_api_example.py`: API REST (Flask) con endpoint `/api/merge`.
 - `gui_example.py`: interfaz de escritorio (tkinter) para entornos sin navegador.
 
-Ambas utilizan el mismo núcleo (`models/pdf_processor.py`) por lo que cualquier mejora en el core beneficia a todas las interfaces.
+Ambas utilizan el mismo núcleo (`models/pdf_processor.py`), por lo que
+cualquier mejora en el core beneficia a todas las interfaces.
 
 ## Configuración y perfiles
 
-`config/profiles.yaml` define perfiles reutilizables (`document`, `photo`, `ebook`, etc.). El valor por defecto se controla con la variable `PDF_MERGER_DEFAULT_PROFILE`. La UI de Streamlit permite alternarlos al vuelo.
+`config/profiles.yaml` define perfiles reutilizables (`document`, `photo`,
+`ebook`, etc.). El valor por defecto se controla con la variable
+`PDF_MERGER_DEFAULT_PROFILE`. La UI de Streamlit permite alternarlos al vuelo.
 
 ## Tests
 
 ```bash
 pytest
+```
+
+## Pre-commit
+
+Activa los ganchos locales para garantizar formato y lint automáticos
+(ruff, black y markdownlint):
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
 ```
 
 ## Documentación detallada
@@ -83,4 +111,5 @@ pytest
 
 ## Roadmap
 
-Consulta `docs/ROADMAP.md` para conocer ideas y mejoras pendientes. Si añades una nueva interfaz o perfil, documenta el cambio en ese archivo.
+Consulta `docs/ROADMAP.md` para conocer ideas y mejoras pendientes. Si añades
+una nueva interfaz o perfil, documenta el cambio en ese archivo.
