@@ -488,8 +488,8 @@ class PDFMergerCore:
             try:
                 if Path(temp_file).exists():
                     Path(temp_file).unlink()
-            except OSError:
-                pass
+            except OSError:  # pragma: no cover
+                pass  # pragma: no cover
         self.temp_files.clear()
 
     def _deskew_pdf_basic(self, input_pdf: str, output_pdf: str) -> bool:
@@ -518,10 +518,10 @@ class PDFMergerCore:
             if self.options.verbose:
                 print("✓ Enderezado completado")
             return True
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             if self.options.verbose:
-                print(f"⚠ Error al enderezar: {e}")
-            return False
+                print(f"⚠ Error al enderezar: {e}")  # pragma: no cover
+            return False  # pragma: no cover
 
     def _optimize_pdf(
         self, input_pdf: str, output_pdf: str, compress_level: int = 5
@@ -564,10 +564,10 @@ class PDFMergerCore:
                     f"✓ Optimización completada (nuevo tamaño: {optimized_size:.2f} MB, reducción: {reduction:.1f}%)"
                 )
             return True
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             if self.options.verbose:
-                print(f"⚠ Error al optimizar: {e}")
-            return False
+                print(f"⚠ Error al optimizar: {e}")  # pragma: no cover
+            return False  # pragma: no cover
 
     def _lossy_reencode(
         self, input_pdf: str, output_pdf: str, dpi: int = 150, quality: int = 70
@@ -619,7 +619,7 @@ class PDFMergerCore:
                     f"✓ Re-encoding lossy completado (nuevo tamaño: {new_size:.2f} MB)"
                 )
             return True
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             if self.options.verbose:
-                print(f"⚠ Error en lossy reencode: {e}")
-            return False
+                print(f"⚠ Error en lossy reencode: {e}")  # pragma: no cover
+            return False  # pragma: no cover

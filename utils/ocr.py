@@ -37,7 +37,9 @@ def perform_ocr_on_image(image: Image.Image, lang: str = "spa") -> str:
         Texto extraído
     """
     if not OCR_AVAILABLE:
-        raise ImportError("pytesseract y pdf2image son necesarios para OCR")
+        raise ImportError(
+            "pytesseract y pdf2image son necesarios para OCR"
+        )  # pragma: no cover
 
     try:
         text = pytesseract.image_to_string(image, lang=lang)

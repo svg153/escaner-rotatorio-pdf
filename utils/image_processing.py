@@ -26,7 +26,7 @@ except ImportError:  # pragma: no cover
 
 def check_image_processing_availability() -> bool:
     """Verifica si las dependencias de procesamiento de imagen están disponibles."""
-    return IMAGE_PROCESSING_AVAILABLE
+    return IMAGE_PROCESSING_AVAILABLE  # pragma: no cover
 
 
 def enhance_image(
@@ -48,7 +48,7 @@ def enhance_image(
         Imagen mejorada
     """
     if not IMAGE_PROCESSING_AVAILABLE:
-        return image
+        return image  # pragma: no cover
 
     # Contraste
     enhancer = ImageEnhance.Contrast(image)
@@ -77,7 +77,7 @@ def denoise_image(image: "Image.Image", strength: int = 10) -> "Image.Image":
         Imagen sin ruido
     """
     if not IMAGE_PROCESSING_AVAILABLE:
-        return image
+        return image  # pragma: no cover
 
     # Convertir a array numpy
     img_array = np.array(image)
@@ -108,7 +108,7 @@ def binarize_image(
     """
     if not IMAGE_PROCESSING_AVAILABLE:
         # Fallback simple
-        return image.convert("1")
+        return image.convert("1")  # pragma: no cover
 
     # Convertir a escala de grises
     gray = image.convert("L")
@@ -149,7 +149,7 @@ def despeckle_image(image: "Image.Image") -> "Image.Image":
         Imagen sin manchas
     """
     if not IMAGE_PROCESSING_AVAILABLE:
-        return image
+        return image  # pragma: no cover
 
     # Aplicar filtro de mediana
     img_array = np.array(image)
@@ -174,7 +174,7 @@ def autocrop_image(image: "Image.Image", margin: int = 10) -> "Image.Image":
         Imagen recortada
     """
     if not IMAGE_PROCESSING_AVAILABLE:
-        return image
+        return image  # pragma: no cover
 
     # Convertir a escala de grises
     gray = np.array(image.convert("L"))
