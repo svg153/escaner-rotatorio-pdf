@@ -288,5 +288,61 @@ def health():
     return jsonify({"status": "ok"})
 
 
+@app.route("/api/ocr-extract", methods=["POST"])
+def ocr_extract():
+    """
+    Extract text from a scanned PDF using OCR.
+
+    Request:
+        - file: PDF file
+        - lang: Language code (default: spa)
+
+    Response:
+        - JSON with extracted text
+    """
+    try:
+        if "file" not in request.files:
+            return jsonify({"error": "No file provided"}), 400
+
+        file = request.files["file"]
+        lang = request.form.get("lang", "spa")
+
+        if not file or not allowed_file(file.filename):
+            return jsonify({"error": "Invalid PDF file"}), 400
+
+        # Save uploaded file
+        input_path = os.path.join(
+            app.config["UPLOAD_FOLDER"], f"ocr_{secure_filename(file.filename)}"
+        )
+        file.save(input_path)
+
+        # Extract text via OCR
+        from utils.ocr import extract_text_from_pdf, check_ocr_availability
+
+        if not check_ocr_availability():
+            try:
+                os.remove(input_path)
+            except OSError:
+                pass
+            return jsonify({"error": "OCR dependencies not available"}), 503
+
+        text = extract_text_from_pdf(input_path, lang=lang)
+
+        # Cleanup
+        try:
+            os.remove(input_path)
+        except OSError:
+            pass
+
+        return jsonify({
+            "text": text,
+            "language": lang,
+            "pages": text.count("--- Página"),
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
